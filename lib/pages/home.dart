@@ -16,17 +16,6 @@ class _HomeState extends State<Home> {
 
   String searchFieldString = "";
 
-  // Color getColor(String type) {
-  //   // print(type);
-  //   if (type == "Spell Card") {
-  //     return Color.fromARGB(255, 103, 198, 106);
-  //   } else if (type == "Trap Card") {
-  //     return Color.fromARGB(255, 226, 122, 114);
-  //   } else {
-  //     return Color.fromARGB(255, 215, 173, 109);
-  //   }
-  // }
-
   @override
   void initState() {
     // TODO: implement initState
@@ -55,7 +44,12 @@ class _HomeState extends State<Home> {
           } else {
             return Scaffold(
               appBar: AppBar(
-                title: new Text('Deck Builder Yu-Gi-Oh'),
+                title: Text(
+                  'Deck Builder Yu-Gi-Oh',
+                  style: TextStyle(
+                    fontSize: 35.0
+                  ),
+                ),
                 centerTitle: true,
               ),
               body: Container(
@@ -69,6 +63,9 @@ class _HomeState extends State<Home> {
                           print("za text is $text");
                           this.populate(text);
                         },
+                        style: TextStyle(
+                          fontSize: 20.0
+                        ),
                         decoration: InputDecoration(
                             border: OutlineInputBorder(),
                             hintText: "Search card by name..."),
@@ -87,11 +84,17 @@ class _HomeState extends State<Home> {
                                       arguments: {'id': dbCards[index].id});
                                   // Navigator.pushNamed(context, '/detail');
                                 },
-                                title: Text(index.toString() +
-                                    " " +
-                                    dbCards[index].name),
-                                leading: Image.asset(
-                                    'assets/images/card_small_bg.jpg'),
+                                title: Text(
+                                  dbCards[index].name,
+                                  style: TextStyle(
+                                    fontSize: 25.0
+                                  ),
+                                ),
+                                leading: Padding(
+                                  padding: const EdgeInsets.all(4.0),
+                                  child: Image.asset(
+                                      'assets/images/card_small_bg.jpg'),
+                                ),
                                 tileColor: DBCard.Card.getColor(dbCards[index].type),
                                 
                                 // tileColor: Colors.green,

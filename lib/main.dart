@@ -14,6 +14,9 @@ void main() async {
   var db = await DecksDatabase.instance.initDB('decks.db');
 
   return runApp(MaterialApp(
+    theme: ThemeData(
+      fontFamily: 'YuGiOh Caps'
+    ),
     initialRoute: '/',
     routes: {
       '/': (context) => Loading(),

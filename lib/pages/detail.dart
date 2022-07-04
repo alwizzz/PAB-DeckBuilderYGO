@@ -46,7 +46,12 @@ class _DetailState extends State<Detail> {
           } else {
             return Scaffold(
                 appBar: AppBar(
-                  title: new Text('Card Detail'),
+                  title: Text(
+                  'Card Detail',
+                  style: TextStyle(
+                    fontSize: 35.0
+                  ),
+                ),
                   centerTitle: true,
                 ),
                 body: SingleChildScrollView(
@@ -67,7 +72,7 @@ class _DetailState extends State<Detail> {
                         SizedBox(height: 30.0),
                         Container(
                           padding: EdgeInsets.all(10),
-                          color: Colors.amber,
+                          color: Color.fromARGB(255, 255, 243, 206),
                           alignment: Alignment.centerLeft,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.end,
@@ -78,7 +83,7 @@ class _DetailState extends State<Detail> {
                                   return Text(
                                     "Attribute: " + dbCard.attribute,
                                     style: TextStyle(
-                                      fontSize: 20.0,
+                                      fontSize: 25.0,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   );
@@ -89,23 +94,23 @@ class _DetailState extends State<Detail> {
                               Text(
                                 "Type: " + dbCard.type,
                                 style: TextStyle(
-                                  fontSize: 20.0,
+                                  fontSize: 25.0,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                               Text(
                                 "Race: " + dbCard.race,
                                 style: TextStyle(
-                                  fontSize: 20.0,
+                                  fontSize: 25.0,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                               (() {
                                 if (dbCard.level != -1) {
                                   return Text(
-                                    "Level: " + dbCard.level.toString(),
+                                    "Level: (" + dbCard.level.toString() + ")",
                                     style: TextStyle(
-                                      fontSize: 20.0,
+                                      fontSize: 25.0,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   );
@@ -118,7 +123,7 @@ class _DetailState extends State<Detail> {
                                   return Text(
                                     "Attack: " + dbCard.atk.toString(),
                                     style: TextStyle(
-                                      fontSize: 20.0,
+                                      fontSize: 25.0,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   );
@@ -131,7 +136,7 @@ class _DetailState extends State<Detail> {
                                   return Text(
                                     "Defense: " + dbCard.def.toString(),
                                     style: TextStyle(
-                                      fontSize: 20.0,
+                                      fontSize: 25.0,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   );
@@ -142,14 +147,14 @@ class _DetailState extends State<Detail> {
                               Text(
                                 "Archetype: " + dbCard.archetype,
                                 style: TextStyle(
-                                  fontSize: 20.0,
+                                  fontSize: 25.0,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                               Text(
                                 "Description: ",
                                 style: TextStyle(
-                                  fontSize: 20.0,
+                                  fontSize: 25.0,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
