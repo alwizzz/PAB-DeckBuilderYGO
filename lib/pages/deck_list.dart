@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:deck_builder_ygo/model/card.dart' as DBCard;
+// import 'package:deck_builder_ygo/model/card.dart' as DBCard;
+import 'package:deck_builder_ygo/model/deck.dart';
 import 'package:deck_builder_ygo/db/DecksDatabase.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+class DeckList extends StatefulWidget {
+  const DeckList({Key? key}) : super(key: key);
 
   @override
-  State<Home> createState() => _HomeState();
+  State<DeckList> createState() => _DeckListState();
 }
 
-class _HomeState extends State<Home> {
+class _DeckListState extends State<DeckList> {
   late Future<void> populated;
-  late List<DBCard.Card> dbCards;
+  late List<Deck> dbDecks;
 
   String searchFieldString = "";
 
@@ -55,7 +56,7 @@ class _HomeState extends State<Home> {
           } else {
             return Scaffold(
               appBar: AppBar(
-                title: new Text('Deck Builder Yu-Gi-Oh'),
+                title: new Text('Deck List'),
                 centerTitle: true,
               ),
               body: Container(
@@ -66,8 +67,8 @@ class _HomeState extends State<Home> {
                       padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 2.0),
                       child: TextField(
                         onSubmitted: (text) {
-                          print("za text is $text");
-                          this.populate(text);
+                          // print("za text is $text");
+                          // this.populate(text);
                         },
                         decoration: InputDecoration(
                             border: OutlineInputBorder(),
@@ -78,21 +79,21 @@ class _HomeState extends State<Home> {
                       child: SizedBox(
                         height: 200.0,
                         child: ListView.builder(
-                          itemCount: dbCards.length,
+                          itemCount: dbDecks.length,
                           itemBuilder: (context, index) {
                             return Card(
                               child: ListTile(
-                                onTap: () {
-                                  Navigator.pushNamed(context, '/detail',
-                                      arguments: {'id': dbCards[index].id});
-                                  // Navigator.pushNamed(context, '/detail');
-                                },
+                                // onTap: () {
+                                //   Navigator.pushNamed(context, '/detail',
+                                //       arguments: {'id': dbDecks[index].id});
+                                //   // Navigator.pushNamed(context, '/detail');
+                                // },
                                 title: Text(index.toString() +
                                     " " +
-                                    dbCards[index].name),
-                                leading: Image.asset(
-                                    'assets/images/card_small_bg.jpg'),
-                                tileColor: DBCard.Card.getColor(dbCards[index].type),
+                                    dbDecks[index].name),
+                                // leading: Image.asset(
+                                //     'assets/images/card_small_bg.jpg'),
+                                // tileColor: DBCard.Card.getColor(dbDecks[index].type),
                                 
                                 // tileColor: Colors.green,
                               ),
@@ -109,24 +110,13 @@ class _HomeState extends State<Home> {
         });
   }
 
-  void populate([String name = ""]) async {
-    if (name == "") {
-      this.populated = (() async {
-        this.dbCards = await DecksDatabase.instance.readAllCard();
-        print('dah cuy');
-        print('dbCards count = ${dbCards.length}');
-      })();
+  void populate() async {
+    this.populated = (() async {
+      this.dbDecks = await DecksDatabase.instance.readAllDeck();
+      print('dah cuy');
+      print('dbDecks count = ${dbDecks.length}');
+    })();
 
-      setState(() {});
-
-    } else {
-      this.populated = (() async {
-        this.dbCards = await DecksDatabase.instance.readCardWithFuzzyName(name);
-        print('fuzzy name ni');
-        print('dbCards count = ${dbCards.length}');
-      })();
-
-      setState(() {});
-    }
+      // setState(() {});
   }
 }

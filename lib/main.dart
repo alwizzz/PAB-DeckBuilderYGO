@@ -6,6 +6,7 @@ import 'package:sqflite/sqflite.dart';
 import 'pages/home.dart';
 import 'pages/loading.dart';
 import 'pages/detail.dart';
+import 'pages/deck_list.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,6 +19,7 @@ void main() async {
       '/': (context) => Loading(),
       '/home': (context) => Home(),
       '/detail': (context) => Detail(),
+      '/deck_list': (context) => DeckList(),
     },
   ));
 }

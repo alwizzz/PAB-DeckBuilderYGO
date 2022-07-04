@@ -336,8 +336,8 @@ class DecksDatabase {
     final orderBy = '${CardFields.name} ASC';
     final result = await db.query(tableCards,
         columns: CardFields.all,
-        where: '${CardFields.name} LIKE %?%',
-        whereArgs: [fuzzy_name],
+        where: '${CardFields.name} LIKE \'%$fuzzy_name%\'',
+        // whereArgs: [fuzzy_name],
         orderBy: orderBy);
 
     return result.map((json) => Card.fromJson(json)).toList();

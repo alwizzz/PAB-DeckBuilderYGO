@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 final String tableCards = 'cards';
 
 class CardFields {
@@ -124,4 +126,30 @@ class Card {
         image_url: json[CardFields.image_url] as String,
         image_url_small: json[CardFields.image_url_small] as String,
       );
+
+  static Color getColor(String type) {
+    // print(type);
+    if (type == "Spell Card") {
+      return Color.fromARGB(255, 73, 213, 150);
+    } else if (type == "Trap Card") {
+      return Color.fromARGB(255, 200, 93, 161);
+    } else if (type == "Normal Monster") {
+      return Color.fromARGB(255, 183, 148, 94);
+    } else if (type == "Effect Monster" || type == "Flip Effect Monster" || 
+        type == "Flip Tuner Effect Monster" || type == "Gemini Monster" || type == "Tuner Monster") {
+      return Color.fromARGB(255, 197, 129, 40);
+    } else if (type == "Fusion Monster") {
+      return Color.fromARGB(255, 154, 113, 199);
+    } else if (type == "Ritual Monster" || type == "Ritual Effect Monster") {
+      return Color.fromARGB(255, 78, 138, 203);
+    } else if (type == "Synchro Monster") {
+      return Color.fromARGB(255, 192,191,192);
+    } else if (type == "Link Monster") {
+      return Color.fromARGB(255, 39, 129, 255);
+    } else if (type == "XYZ Monster") {
+      return Color.fromARGB(255, 73, 74, 73);
+    } else {
+      return Color.fromARGB(255, 225, 221, 217);
+    }
+  }
 }
